@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/s_blog/css/test.css" %}">
+</head>
+<body>
+    <div class="lzhdiv">
+        html
+    </div>
+    <button>后端</button>
+    <div id="result1">
+        <h1>en</h1>
+        <h1></h1>
+    </div>
+<script type='text/javascript' src="{% static '/s_blog/images/QQ1.jpg' %}"></script>
+<script>
+    $(document).ready(function(){
+        function refresh(){
+            $.getJSON("/data_fresh/", function (ret) {
+                $('#result1').html(ret.title);
+                $('#result2').html(ret.title);
+            })
+        }
+        setInterval(refresh, 3000)
+    })
+</script>
+<script>
+    $('button').click(function () {
+        $.get('getdata',function (data) {
+            alert(data.article_title)
+            
+        })
+        
+    })
+</script>
+</body>
+</html>
